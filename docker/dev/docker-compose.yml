@@ -1,0 +1,19 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../src:/app
+    networks:
+      frontend:
+        ipv4_address: 172.2.0.2
+
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.2.0.0/16
